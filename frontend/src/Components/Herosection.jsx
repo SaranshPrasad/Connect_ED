@@ -24,25 +24,25 @@ const handleButtonClick = () => {
 }
 
   return (
-    <div className="w-full h-[100vh] flex flex-col justify-center  items-center  bg-black text-wrap  inset-0  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] gap-4">
-        <img src={logo} alt="logo" className='mix-blend-screen top-[2%] left-[12%] absolute' />
-        {/* <div className="flex justify-center items-center text-wrap flex-wrap gap-3"> */}
+    <div className="w-full h-[100vh] flex flex-col justify-center  items-center  bg-black text-wrap  inset-0  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+        <div className="flex justify-center ">
+        <div className=""><img src={logo} alt="logo" className='' /></div>
         <h1
-          ref={textRef} // Attach the ref to the text element
+          ref={textRef}
           className="
-             
             text-5xl font-bold text-transparent bg-clip-text 
             bg-gradient-to-r from-white via-red-50 to-red-200
             drop-shadow-[0_0_5px_rgba(255,255,255,0.6)]
             drop-shadow-[0_0_10px_rgba(255,0,255,0.5)]
-            drop-shadow-[0_0_20px_rgba(255,0,255,0.4)] 
+            drop-shadow-[0_0_20px_rgba(255,0,255,0.4)] m-auto ml-[-20px]
 
           "
         >
           {title}
        </h1>
+        </div>
        
-       <p className="text-white text-lg  transition-all ease-in delay-75 opacity-1 text-wrap  animate-pulse mt-1">
+       <p className="text-white text-lg  transition-all ease-in delay-75 opacity-1 text-wrap  animate-pulse">
        Stay Connected, Stay Inspired, Your Alumni Network Awaits!  Reconnect, Revive, and Thrive - Join Our Alumni Network Today!
       </p>
       <div className="flex gap-2 w-full justify-center">
@@ -52,11 +52,6 @@ const handleButtonClick = () => {
       
      
         </div>
-       
-       
-       
-       
-      //  </div>
    
   );
 };

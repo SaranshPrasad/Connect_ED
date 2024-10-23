@@ -1,24 +1,16 @@
-import axios from 'axios';
+
 import React, { useEffect, useState } from 'react';
-import { BASE_URL } from '../utils/constants';
+
 import { validateUserAuth } from '../utils/validators';
 import { useNavigate } from 'react-router-dom';
 import EditProfileForm from './EditUserProfile';
 import Navbar from './Navbar';
+import { getUserData } from '../utils/getDatas';
 
 const UserProfile = () => {
   const navigate = useNavigate();
   const [userData, setUserData] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const getUserData = async () => {
-    try {
-      const response = await axios.get(`${BASE_URL}/user/profile`, { withCredentials: true });
-      return response.data.data;
-    } catch (error) {
-      console.error('Error fetching user data:', error);
-    }
-  };
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -34,7 +26,7 @@ const UserProfile = () => {
     fetchUserData();
   }, [navigate]);
 
-console.log(userData)
+
 
   const profilePicUrl = userData?.photoUrl || "https://via.placeholder.com/150";
 

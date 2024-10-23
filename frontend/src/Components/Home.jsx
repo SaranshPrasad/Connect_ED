@@ -5,7 +5,7 @@ import Herosection from './Herosection'
 
 const Home = () => {
   return (
-    <div className='font-[Poppins]'>
+    <div className='font-[Poppins] '>
         <Navbar/>
         <Herosection/>
     </div>

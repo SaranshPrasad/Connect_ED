@@ -1,4 +1,4 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { getAllConnection, getConnectionReceived, getFeedData, getLoggedInUserData } from "../utils/getDatas";
 import { validateUserAuth } from "../utils/validators";
 import { useEffect, useState } from "react";
@@ -13,7 +13,6 @@ const Feed = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // Fetch user profiles
     const isAuth = validateUserAuth();
     if (!isAuth) {
       navigate('/auth');
@@ -30,9 +29,9 @@ const Feed = () => {
       console.log(connectionRequests);
     };
 
-    // Fetch logged-in user profile (mocking the request, you will have to replace with real API)
+
     const fetchLoggedInUser = async () => {
-      const user = await getLoggedInUserData(); // Replace with your actual user data API
+      const user = await getLoggedInUserData(); 
       setLoggedInUser(user);
     };
     const fetchAllConnections = async () => {
@@ -97,27 +96,34 @@ const Feed = () => {
       console.log(error);
     }
   };
-
+  console.log(connections)
   return (
     <>
     <Navbar/>
     <div className="flex justify-between m-auto p-6  h-screen space-x-8  bg-black text-wrap  inset-0  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
-      
-      {/* Left Column: Logged-in User Profile */}
       <div className="w-1/6 bg-gray-900 text-white p-6 rounded-lg shadow-md h-fit mt-20">
         {loggedInUser ? (
           <div className="mb-4">
+            <img src={loggedInUser.photoUrl} alt="userphoto" className="w-full h-full object-cover rounded-full border-4 border-gray-700"/>
             <h2 className="text-lg font-bold mb-2">{loggedInUser.firstName} {loggedInUser.lastName}</h2>
             <p className="text-gray-400 mb-4">@{loggedInUser.userName}</p>
             <p className="text-gray-300 mb-2">Job Title: {loggedInUser.jobTitle}</p>
-            <p className="text-gray-300">Skills: {loggedInUser.skills?.join(', ') || 'No skills listed'}</p>
+            {loggedInUser?.skills ? (
+            <ul className="flex flex-wrap gap-2 mt-2">
+              {loggedInUser?.skills.map((skill, index) => (
+                <li key={index} className="bg-gray-800 px-4 py-2 rounded-full text-sm font-medium">
+                  {skill}
+                </li>
+              ))}
+            </ul>
+          ) : (
+            <p className="text-lg text-gray-300">No skills added.</p>
+          )}
           </div>
         ) : (
           <p>Loading your profile...</p>
         )}
       </div>
-
-      {/* Middle Column: Swipeable Profiles */}
       <div className="w-3/6 overflow-y-scroll no-scrollbar mt-10">
         <h2 className="text-xl font-bold text-white mb-4">Explore Profiles</h2>
         {profiles?.length > 0 ? (
@@ -128,7 +134,7 @@ const Feed = () => {
             >
               <div className="mb-4">
                 <h3 className="text-lg font-bold">{profile?.firstName} {profile?.lastName}</h3>
-                <p className="text-gray-400">@{profile?.username}</p>
+                <p className="text-gray-400">@{profile?.userName}</p>
               </div>
               <p className="text-gray-300 mb-2">Job Title: {profile?.jobTitle}</p>
               <p className="text-gray-300 mb-2">About: {profile?.about}</p>
@@ -153,8 +159,6 @@ const Feed = () => {
           <p className="text-gray-300">No more profiles available.</p>
         )}
       </div>
-
-      {/* Right Column: Connection Requests */}
       <div className="w-1/6 mt-20">
       <div className=" bg-gray-800 text-white p-4 rounded-lg shadow-md h-fit mb-3">
         <h2 className="text-xl font-bold mb-4">Connection Requests</h2>
@@ -197,7 +201,7 @@ const Feed = () => {
                 {request?.firstName || 'Unknown'}
               </h3>
               <div className="flex justify-between mt-2">
-                <p className="text-white-800">See Posts</p>
+                <Link to={`/user/post/${request?._id}`}> See Post </Link>
               </div>
             </div>
           ))

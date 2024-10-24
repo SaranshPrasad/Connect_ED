@@ -34,7 +34,7 @@ export const getLoggedInUserData = async () => {
         const res = await axios.get(`${BASE_URL}/user/profile`,  {withCredentials:true});
         return res?.data?.data;
     } catch (error) {
-        console.error('Error fetching connections:', error); 
+        console.error('Error fetching logged in user data :', error); 
     }
 }
 
@@ -43,6 +43,17 @@ export const getAllConnection = async () => {
         const res = await axios.get(`${BASE_URL}/user/all/connections`, {withCredentials: true});
         return res?.data?.data;
     } catch (error) {
+        console.error('Error fetching connections:', error); 
+        
+    }
+}
+
+export const getUserPost = async (userId) => {
+    try {
+        const res = await axios.get(`${BASE_URL}/user/post/${userId}`, { withCredentials: true });
+        return res?.data?.data;
+    } catch (error) {
+        console.error('Error fetching post:', error); 
         
     }
 }

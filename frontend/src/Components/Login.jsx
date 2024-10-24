@@ -16,7 +16,7 @@ const Login = () => {
   useEffect(() => {
     const isUserAuthenticated = validateUserAuth();
   if (isUserAuthenticated) {
-    navigate('/user/feed');
+    navigate('/user/profile');
   }
   }, []);
     const handleLogin = async (e) => {
@@ -44,7 +44,7 @@ const Login = () => {
                 },{ withCredentials: true });
                 const token = data?.data?.token;
                 Cookies.set("token", token, {expires:1});
-                return navigate("/user/feed");
+                return navigate("/user/profile");
             } catch (err) {
                 setErrorMessage("Invalid credentials");
                 
@@ -68,24 +68,6 @@ const Login = () => {
         </h2>
         {!isLoginForm && (
           <>
-          {/* <input
-            ref={firstNameRef}
-            type="text"
-            placeholder="First name"
-            className="p-2 my-2 w-full bg-gray-900 rounded-sm"
-          />
-          <input
-            ref={lastNameRef}
-            type="text"
-            placeholder="Last name"
-            className="p-2 my-2 w-full bg-gray-900 rounded-sm"
-          />
-          <input
-            ref={ageRef}
-            type="number"
-            placeholder="Enter age"
-            className="p-2 my-2 w-full bg-gray-900 rounded-sm"
-          /> */}
           <input
             ref={usernameRef}
             type="text"

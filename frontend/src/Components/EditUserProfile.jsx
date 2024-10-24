@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, { useState, useEffect, useRef } from 'react';
+import React, {useRef } from 'react';
 import { BASE_URL } from '../utils/constants';
 
 const EditProfileForm = ({ setIsModalOpen, initialData, setUserData }) => {

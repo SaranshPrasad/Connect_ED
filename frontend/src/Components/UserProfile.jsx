@@ -62,7 +62,7 @@ const UserProfile = () => {
 
         <div className="mt-6">
           <h2 className="text-2xl font-semibold">About</h2>
-          <p className="text-lg mt-2 text-gray-300">{userData.about || "This user hasn't added a bio yet."}</p>
+          <p className="text-lg mt-2 text-gray-300">{userData?.about || "This user hasn't added a bio yet."}</p>
         </div>
 
         <div className="mt-6">

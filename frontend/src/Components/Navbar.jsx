@@ -31,7 +31,12 @@ const Navbar = () => {
               <button className='mr-4' > <Link to='/auth'>Sign In</Link></button>
               </>
               }
+              <button className='mr-4' > <Link to='/user/feed' >Feed</Link></button>
+              <button className='mr-4'  > <Link to='/user/profile'>Profile</Link></button>
+              <button className='mr-4' > <Link to='/user/post'>Create Posts</Link></button>
+              
               <button className='mr-4' onClick={handleLogout}> Logout</button>
+
               
             </div>
         </div>

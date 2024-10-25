@@ -1,5 +1,5 @@
 import axios from 'axios';
-import React, {useRef } from 'react';
+import React, { useRef } from 'react';
 import { BASE_URL } from '../utils/constants';
 
 const EditProfileForm = ({ setIsModalOpen, initialData, setUserData }) => {
@@ -9,6 +9,7 @@ const EditProfileForm = ({ setIsModalOpen, initialData, setUserData }) => {
     const skillsRef = useRef(initialData.skills ? initialData.skills.join(', ') : '');
     const jobTitleRef = useRef(initialData.jobTitle || '');
     const locationRef = useRef(initialData.location || '');
+    const urlRef = useRef(initialData.photoUrl || ''); // New ref for URL
 
     const handleFormSubmit = async (e) => {
         e.preventDefault();
@@ -32,6 +33,9 @@ const EditProfileForm = ({ setIsModalOpen, initialData, setUserData }) => {
             const updatedSkills = skillsRef.current.value.split(',').map(skill => skill.trim());
             if (JSON.stringify(updatedSkills) !== JSON.stringify(initialData.skills)) {
                 updatedData.skills = updatedSkills;
+            }
+            if (urlRef.current.value !== initialData.photoUrl) {
+                updatedData.photoUrl = urlRef.current.value;
             }
 
             if (Object.keys(updatedData).length > 0) {
@@ -84,6 +88,14 @@ const EditProfileForm = ({ setIsModalOpen, initialData, setUserData }) => {
                         ref={locationRef}
                         defaultValue={initialData.location || ''}
                         placeholder="Location"
+                        className="bg-gray-700 text-white p-2 rounded w-full"
+                    />
+                    <input
+                        type="text"
+                        name="url"
+                        ref={urlRef}
+                        defaultValue={initialData.url || ''}
+                        placeholder="Update URL"
                         className="bg-gray-700 text-white p-2 rounded w-full"
                     />
                     <textarea

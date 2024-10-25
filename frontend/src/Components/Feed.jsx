@@ -100,7 +100,7 @@ const Feed = () => {
   return (
     <>
     <Navbar/>
-    <div className="flex justify-between m-auto p-6  h-screen space-x-8  bg-black text-wrap  inset-0  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
+    <div className="flex justify-between m-auto p-6  max-h-screen space-x-8  overflow-y-scroll no-scrollbar bg-black text-wrap  inset-0  bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]">
       <div className="w-1/6 bg-gray-900 text-white p-6 rounded-lg shadow-md h-fit mt-20">
         {loggedInUser ? (
           <div className="mb-4">
@@ -132,10 +132,12 @@ const Feed = () => {
               key={profile?._id}
               className="bg-gray-800 text-white p-6 rounded-lg mb-6 shadow-md hover:shadow-xl transition-shadow duration-300"
             >
-              <div className="mb-4">
+              <div className="mb-4 flex justify-center items-center flex-col">
+            <img src={profile?.photoUrl} alt="userphoto" className="w-4/12 h-4/12 object-cover  rounded-full border-4 border-gray-700"/>
+            </div>
                 <h3 className="text-lg font-bold">{profile?.firstName} {profile?.lastName}</h3>
                 <p className="text-gray-400">@{profile?.userName}</p>
-              </div>
+             
               <p className="text-gray-300 mb-2">Job Title: {profile?.jobTitle}</p>
               <p className="text-gray-300 mb-2">About: {profile?.about}</p>
               <p className="text-gray-300 mb-4">Skills: {profile?.skills?.join(', ') || 'No skills listed'}</p>
@@ -159,7 +161,7 @@ const Feed = () => {
           <p className="text-gray-300">No more profiles available.</p>
         )}
       </div>
-      <div className="w-1/6 mt-20">
+      <div className="w-1/6 mt-20 overflow-y-scroll no-scrollbar">
       <div className=" bg-gray-800 text-white p-4 rounded-lg shadow-md h-fit mb-3">
         <h2 className="text-xl font-bold mb-4">Connection Requests</h2>
         <div className=" p-4 rounded-lg shadow-md bg-slate-300 text-black">
@@ -167,6 +169,7 @@ const Feed = () => {
           connectionRequests.map((request) => (
             <div key={request._id} className="mb-4">
               <h3 className="text-lg font-bold">
+                <img src={request?.fromUserId?.photoUrl} alt="userphoto" />
                 {request?.fromUserId?.firstName || 'Unknown'}
               </h3>
               <div className="flex justify-between mt-2">
@@ -190,18 +193,20 @@ const Feed = () => {
         )}
         </div>
       </div>
-      <div className=" bg-gray-800 text-white p-4 rounded-lg shadow-md h-fit">
+      <div className=" bg-gray-800 text-white p-4 rounded-lg shadow-md h-fit overflow-y-scroll no-scrollbar ">
       <h2 className="text-xl font-bold mb-4">Connections</h2>
-        <div className="bg-slate-400 p-4 rounded-lg shadow-md h-fit text-black">
+        <div className="  ">
         
         {connections?.length > 0 ? (
           connections.map((request) => (
-            <div key={request._id} className="mb-4">
+            <div key={request._id} className="mb-4 bg-slate-400 p-4 rounded-lg shadow-md h-fit text-black flex justify-center items-center flex-col">
               <h3 className="text-lg font-bold">
                 {request?.firstName || 'Unknown'}
               </h3>
-              <div className="flex justify-between mt-2">
-                <Link to={`/user/post/${request?._id}`}> See Post </Link>
+              <div className="flex justify-between mt-2 items-center">
+              <img src={request?.photoUrl} alt="userPhoto" className="rounded-full w-1/2 h-1/2 border-gray-700" />
+
+                <Link to={`/user/post/${request?._id}`} className="bg-black text-white  p-2 m-2 rounded-md text-sm"> See Post </Link>
               </div>
             </div>
           ))

@@ -1,6 +1,6 @@
-### Alumni Connect
+# Connect - ED
 
-Alumni Connect is a web platform designed to foster meaningful connections between alumni and current students. The platform allows users to send connection requests to alumni, post their thoughts and images, and build professional networks by forming connections. This project aims to create a seamless and engaging way for users to stay in touch with their alma mater, share their experiences, and provide mentorship.
+Connect-ED is a web platform designed to foster meaningful connections between alumni and current students. The platform allows users to send connection requests to alumni, post their thoughts and images, and build professional networks by forming connections. This project aims to create a seamless and engaging way for users to stay in touch with their alma mater, share their experiences, and provide mentorship.
 
 ## Features
 
@@ -10,7 +10,7 @@ Alumni Connect is a web platform designed to foster meaningful connections betwe
 - **Connection System**: Once connection requests are accepted, users can interact and build their networks.
 - **Real-Time Notifications**: Users receive notifications when connection requests are sent or accepted.
 - **Alumni Search**: Find alumni by name, field, or graduation year.
-
+- **Real time Chat**: Chat with your connected alumini.
 ## Technologies Used
 
 - **Frontend**: React, HTML, CSS, JavaScript
@@ -19,7 +19,7 @@ Alumni Connect is a web platform designed to foster meaningful connections betwe
 - **Authentication**: JWT (JSON Web Tokens) for secure authentication
 - **File Uploads**: Multer for handling image uploads
 - **Styling**: Bootstrap / Material UI for the user interface design
-
+- **WebSocket**: For realtime chating system.
 ## Installation
 
 To get a local copy up and running, follow these steps:
@@ -33,6 +33,5 @@ To get a local copy up and running, follow these steps:
 
 Welcome Contributers !
 Contribution in fields :
-- Make a real-time chat system with alumini.
 - Bug Fixes 
-- And UI/UX in the frontend repo
+- And UI/UX in the frontend 

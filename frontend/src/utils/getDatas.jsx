@@ -32,7 +32,7 @@ export const getConnectionReceived = async () => {
 export const getLoggedInUserData = async () => {
     try {
         const res = await axios.get(`${BASE_URL}/user/profile`,  {withCredentials:true});
-        return res?.data?.data;
+        return res?.data;
     } catch (error) {
         console.error('Error fetching logged in user data :', error); 
     }
@@ -54,6 +54,15 @@ export const getUserPost = async (userId) => {
         return res?.data?.data;
     } catch (error) {
         console.error('Error fetching post:', error); 
+        
+    }
+}
+
+export const getChats = async (toUserId) => {
+    try {
+        const res = await axios.get(`${BASE_URL}/chat/${toUserId}`, {withCredentials:true});
+        return res?.data;
+    } catch (error) {
         
     }
 }

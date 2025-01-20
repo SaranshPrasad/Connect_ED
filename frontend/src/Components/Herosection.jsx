@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 
 const Herosection = () => {
-  const name = "Alumini Connect.";
+  const name = "Connect -Ed";
   const [title, setTitle] = useState("");
   const [isComplete, setIsComplete] = useState(false);
   const textRef = useRef(null);

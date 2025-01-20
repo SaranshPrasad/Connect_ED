@@ -14,7 +14,6 @@ const Home = () => {
   }, []);
   return (
     <div className='font-[Poppins] '>
-      
         <Herosection/>
     </div>
   )

@@ -6,11 +6,6 @@ import UserProfile from './Components/UserProfile';
 import Feed from './Components/Feed';
 import UserPosts from './Components/UserPosts';
 import AddPostForm from './Components/AddPostForm';
-<<<<<<< HEAD
-
-
-=======
->>>>>>> 981c2b54f86a3105d338a5d2a1891a2ba4bfb176
 import Chat from './Components/Chat';
 import Connections from './Components/Connections';
 import { Provider } from 'react-redux';

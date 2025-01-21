@@ -2,8 +2,9 @@ import React from 'react';
 import { MDBCard, MDBCardBody, MDBCardText, MDBCardImage, MDBBtn, MDBTypography, MDBIcon } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
-
+import Cookies from "js-cookie";
 const  ProfileCard = ({photoUrl, firstName, lastName, username, jobTitle, id, about, skill, location}) => {
+    const token = Cookies.get("token");
     const options = {
     withCredentials: true,
      headers:{'Authorization': `Bearer ${token}`}

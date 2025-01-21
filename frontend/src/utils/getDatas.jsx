@@ -1,5 +1,7 @@
 import axios from "axios";
 import { BASE_URL } from "./constants";
+import Cookies from "js-cookie";
+const token = Cookies.get("token");
 const options = {
     withCredentials: true,
      headers:{'Authorization': `Bearer ${token}`}

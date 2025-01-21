@@ -9,7 +9,10 @@ const ConnectionRequests = () => {
   const [connections, setConnections] = useState([]);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(""); // success or error
-
+  const options = {
+    withCredentials: true,
+     headers:{'Authorization': `Bearer ${token}`}
+  }
   useEffect(() => {
     const fetchConnectionRequests = async () => {
       const data = await getConnectionReceived();
@@ -26,7 +29,7 @@ const ConnectionRequests = () => {
       const res = await axios.post(
         `${BASE_URL}/request/review/${status}/${requestId}`,
         {},
-        { withCredentials: true }
+        options
       );
       if (res.status >= 200 && res.status < 300) {
         setMessage("Request Accepted!");
@@ -47,7 +50,7 @@ const ConnectionRequests = () => {
       const res = await axios.post(
         `${BASE_URL}/request/review/${status}/${requestId}`,
         {},
-        { withCredentials: true }
+        options
       );
       if (res.status >= 200 && res.status < 300) {
         setMessage("Request Declined!");

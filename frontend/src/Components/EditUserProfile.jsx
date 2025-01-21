@@ -12,8 +12,9 @@ import {
 } from 'mdb-react-ui-kit';
 import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
-
+import Cookies from "js-cookie";
 export default function EditProfileForm({ initialData, setUserData }) {
+    const token = Cookies.get("token");
   const [open, setOpen] = useState(false);
   const firstNameRef = useRef(initialData.firstName || '');
   const lastNameRef = useRef(initialData.lastName || '');

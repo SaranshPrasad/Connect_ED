@@ -4,8 +4,9 @@ import { FaCheck, FaTimes } from "react-icons/fa";
 import { BASE_URL } from "../utils/constants";
 import axios from "axios";
 import Navbar from "./Navbar";
-
+import Cookies from "js-cookie";
 const ConnectionRequests = () => {
+    const token = Cookies.get("token");
   const [connections, setConnections] = useState([]);
   const [message, setMessage] = useState("");
   const [messageType, setMessageType] = useState(""); // success or error

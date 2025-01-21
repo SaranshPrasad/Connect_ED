@@ -5,8 +5,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../utils/userSlice';
 import { BASE_URL } from '../utils/constants';
 import axios from 'axios';
-
+import Cookies from "js-cookie";
 const Navbar = () => {
+    const token = Cookies.get("token");
+  const options = {
+    withCredentials: true,
+     headers:{'Authorization': `Bearer ${token}`}
+  }
   const [isSignIn, setIsSignIn] = useState(true);
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -17,7 +22,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
-      await axios.post(BASE_URL + "/auth/logout", {}, { withCredentials: true });
+      await axios.post(BASE_URL + "/auth/logout", {},options);
       dispatch(removeUser());
       navigate("/auth");
     } catch (err) {

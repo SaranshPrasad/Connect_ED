@@ -44,6 +44,10 @@ const Feed = () => {
     fetchConnectionRequests();
     fetchAllConnections();
   }, []);
+    const options = {
+    withCredentials: true,
+     headers:{'Authorization': `Bearer ${token}`}
+  }
   const handleAccept = async (rId) => {
     try {
       const requestId = rId;
@@ -51,7 +55,7 @@ const Feed = () => {
       const res = await axios.post(
         `${BASE_URL}/request/review/${status}/${requestId}`,
         {},
-        { withCredentials: true }
+       options
       );
       if (res.status >= 200 && res.status < 300) {
         window.location.reload();
@@ -68,7 +72,7 @@ const Feed = () => {
       const res = await axios.post(
         `${BASE_URL}/request/review/${status}/${requestId}`,
         {},
-        { withCredentials: true }
+        options
       );
       if (res.status >= 200 && res.status < 300) {
         window.location.reload();

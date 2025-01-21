@@ -24,7 +24,10 @@ export default function EditProfileForm({ initialData, setUserData }) {
   const urlRef = useRef(initialData.photoUrl || '');
 
   const inputRef = useRef(null);
-
+  const options = {
+    withCredentials: true,
+     headers:{'Authorization': `Bearer ${token}`}
+  }
   useEffect(() => {
     if (open) {
       inputRef.current?.focus();
@@ -59,7 +62,7 @@ export default function EditProfileForm({ initialData, setUserData }) {
       }
 
       if (Object.keys(updatedData).length > 0) {
-        const res = await axios.patch(`${BASE_URL}/user/profile/edit`, updatedData, { withCredentials: true });
+        const res = await axios.patch(`${BASE_URL}/user/profile/edit`, updatedData, options);
         setUserData(res.data.data);
       } else {
         console.log("No changes to update");

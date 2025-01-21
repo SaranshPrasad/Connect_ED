@@ -12,8 +12,9 @@ import axios from "axios";
 import Navbar from "./Navbar";
 import ProfileCards from "./ProfileCards";
 import { useSelector } from "react-redux";
-
+import Cookies from "js-cookie";
 const Feed = () => {
+    const token = Cookies.get("token");
   const [profiles, setProfiles] = useState([]);
   const [connectionRequests, setConnectionRequests] = useState([]);
   const [loggedInUser, setLoggedInUser] = useState(null);

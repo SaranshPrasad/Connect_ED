@@ -4,6 +4,10 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
 const  ProfileCard = ({photoUrl, firstName, lastName, username, jobTitle, id, about, skill, location}) => {
+    const options = {
+    withCredentials: true,
+     headers:{'Authorization': `Bearer ${token}`}
+  }
   const handleInterested = async (profileId) => {
     try {
       const toUserId = profileId;
@@ -11,7 +15,7 @@ const  ProfileCard = ({photoUrl, firstName, lastName, username, jobTitle, id, ab
       const res = await axios.post(
         `${BASE_URL}/request/send/${status}/${toUserId}`,
         {},
-        { withCredentials: true }
+        options
       );
       if (res.status >= 200 && res.status < 300) {
         window.location.reload();
@@ -28,7 +32,7 @@ const  ProfileCard = ({photoUrl, firstName, lastName, username, jobTitle, id, ab
       const res = await axios.post(
         `${BASE_URL}/request/send/${status}/${toUserId}`,
         {},
-        { withCredentials: true }
+       options
       );
       if (res.status >= 200 && res.status < 300) {
         window.location.reload();

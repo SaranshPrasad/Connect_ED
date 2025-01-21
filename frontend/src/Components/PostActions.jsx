@@ -3,9 +3,13 @@ import axios from 'axios';
 import { BASE_URL } from '../utils/constants';
 
 const PostActions = ({ post }) => {
+    const options = {
+    withCredentials: true,
+     headers:{'Authorization': `Bearer ${token}`}
+  }
   const handleDelete = async (postId) => {
     try {
-      const res = await axios.delete(`${BASE_URL}/posts/${postId}`, { withCredentials: true });
+      const res = await axios.delete(`${BASE_URL}/posts/${postId}`, options);
       if (res.status >= 200 && res.status < 300) {
         window.location.reload(); // Refresh the page after deletion
       }

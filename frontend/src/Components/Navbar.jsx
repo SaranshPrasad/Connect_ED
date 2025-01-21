@@ -24,6 +24,7 @@ const Navbar = () => {
     try {
       await axios.post(BASE_URL + "/auth/logout", {},options);
       dispatch(removeUser());
+    Cookies.remove("token");
       navigate("/auth");
     } catch (err) {
       console.log(err);

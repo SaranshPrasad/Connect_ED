@@ -7,7 +7,7 @@ const PORT = 4001;
 const http = require('http');
 require("dotenv").config();
 // middlewares 
-const corsOptions = { origin: 'https://connect-ed-mmjw.onrender.com', methods: ['GET', 'POST', 'PUT', 'DELETE'],
+const corsOptions = { origin: 'https://connect-ed-mmjw.onrender.com', methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
                      allowedHeaders: ['Content-Type', 'Authorization'], credentials: true }; 
 app.use(cors(corsOptions));
 app.use(express.json());
